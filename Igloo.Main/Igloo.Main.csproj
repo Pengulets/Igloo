@@ -6,12 +6,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="7.23.3" />
-    </ItemGroup>
-
-    <ItemGroup>
         <Content Include="Assets\**\*">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="7.23.3" />
     </ItemGroup>
 </Project>
