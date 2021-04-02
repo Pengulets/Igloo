@@ -6,6 +6,7 @@ namespace Igloo.Main
     {
         static void Main()
         {
+            // TODO: Make base bigger for backgrounds or flaps
             using var imgBase = new MagickImage("./Assets/Base.png");
             
             using var step1 = new MagickImage("./Assets/Masks/Step1.png");
