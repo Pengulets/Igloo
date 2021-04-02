@@ -6,23 +6,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\Masks" />
+        <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="7.23.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="Assets\Masks\Step1.png">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Assets\Base.png">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Assets\Masks\Step2.png">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
+        <Content Include="Assets\**\*">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="7.23.3" />
-    </ItemGroup>
-
 </Project>
