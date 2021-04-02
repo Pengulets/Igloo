@@ -1,11 +1,10 @@
-﻿using System;
-using ImageMagick;
+﻿using ImageMagick;
 
 namespace Igloo.Main
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             using var imgBase = new MagickImage("./Assets/Base.png");
             using var step1 = new MagickImage("./Assets/Masks/Step1.png");
