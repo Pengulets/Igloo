@@ -21,6 +21,7 @@ namespace Igloo.Main
                     width = imgBaseSize.Width;
                 }
 
+                // TODO: Switch between file or image IF the "Value" contain "#"
                 var imgBase = new MagickImage(new MagickColor(pengulet.Steps[0].Value), width, height);
                 
                 using var step1 = new MagickImage("./Assets/Masks/Step1.png");
@@ -29,10 +30,11 @@ namespace Igloo.Main
                 using var step4 = new MagickImage("./Assets/Masks/Step4.png");
                 using var step5 = new MagickImage("./Assets/Masks/Step5.png");
 
+                // TODO: Switch between file or image IF the "Value" contain "#"
                 using var faceBackFILL = new MagickImage(new MagickColor(pengulet.Steps[1].Value), step1.Width, step1.Height);
                 
-                // TODO: USE random texture OR colour
-                using var faceEdgeFILL = new MagickImage(new MagickColor("#000000"), step2.Width, step2.Height);
+                // TODO: Switch between file or image IF the "Value" contain "#"
+                using var faceEdgeFILL = new MagickImage(new MagickColor(pengulet.Steps[2].Value), step2.Width, step2.Height);
 
                 // TODO: USE random texture OR colour
                 using var noseFullFILL = new MagickImage(new MagickColor("#F7931E"), step3.Width, step3.Height);
