@@ -37,8 +37,6 @@ namespace Igloo.Main
 			int height = ImgBaseSize.Height;
 			int width = ImgBaseSize.Width;
 
-			// TODO: Make base bigger for backgrounds or flaps
-
 			// TODO: Switch between file or image IF the "Value" contain "#"
 			var imgBase = new MagickImage(new MagickColor(pengulet.Steps[0].Value), width, height);
 
@@ -72,9 +70,13 @@ namespace Igloo.Main
 			imgBase.SetWriteMask(Step5);
 			imgBase.Composite(blushFill, CompositeOperator.Over);
 
-			var stream = new FileStream($"{pengulet.Index.ToString()}.png", FileMode.Create);
-
-			await imgBase.WriteAsync(stream, MagickFormat.Png);
+			var streamNormal = new FileStream($"{pengulet.Index.ToString()}.png", FileMode.Create);
+			await imgBase.WriteAsync(streamNormal, MagickFormat.Png);
+			
+			imgBase.Resize(350, 350);
+			
+			var streamSmall = new FileStream($"{pengulet.Index.ToString()}.opensea.png", FileMode.Create);
+			await imgBase.WriteAsync(streamSmall, MagickFormat.Png);
 		}
 
 		public static void Dispose()
