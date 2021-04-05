@@ -1,68 +1,90 @@
-﻿using System;
+﻿using System.IO;
+using System.Threading.Tasks;
 using ImageMagick;
 
 namespace Igloo.Main
 {
-    class Program
-    {
-        static void Main()
-        {
-            PenguletsList pengulets = Config.Read();
+	class Program
+	{
+		private static readonly MagickImage Step1 = new MagickImage("./Assets/Masks/Step1.png");
+		private static readonly MagickImage Step2 = new MagickImage("./Assets/Masks/Step2.png");
+		private static readonly MagickImage Step3 = new MagickImage("./Assets/Masks/Step3.png");
+		private static readonly MagickImage Step4 = new MagickImage("./Assets/Masks/Step4.png");
+		private static readonly MagickImage Step5 = new MagickImage("./Assets/Masks/Step5.png");
+		private static readonly MagickImage ImgBaseSize = new MagickImage("./Assets/Base.png");
+		private static readonly MagickColor NoseFullFillColour = new MagickColor("#F7931E");
+		private static readonly MagickColor NoseTopFillColour = new MagickColor("#FFAC5A");
+		private static readonly MagickColor BlushFillColour = new MagickColor("#F49CC5");
+		
+		public static async Task Main()
+		{
+			PenguletsList pengulets = Config.Read();
 
-            foreach (var pengulet in pengulets.Pengulets)
-            {
-                int height = 0;
-                int width = 0;
+			var tasks = new Task[pengulets.Pengulets.Count];
 
-                // TODO: Make base bigger for backgrounds or flaps
-                using (var imgBaseSize = new MagickImage("./Assets/Base.png"))
-                {
-                    height = imgBaseSize.Height;
-                    width = imgBaseSize.Width;
-                }
+			for (var i = 0; i < pengulets.Pengulets.Count; i++)
+			{
+				var pengulet = pengulets.Pengulets[i];
+				tasks[i] = WritePenguletAsync(pengulet);
+			}
 
-                // TODO: Switch between file or image IF the "Value" contain "#"
-                var imgBase = new MagickImage(new MagickColor(pengulet.Steps[0].Value), width, height);
-                
-                using var step1 = new MagickImage("./Assets/Masks/Step1.png");
-                using var step2 = new MagickImage("./Assets/Masks/Step2.png");
-                using var step3 = new MagickImage("./Assets/Masks/Step3.png");
-                using var step4 = new MagickImage("./Assets/Masks/Step4.png");
-                using var step5 = new MagickImage("./Assets/Masks/Step5.png");
+			await Task.WhenAll(tasks);
+			Dispose();
+		}
 
-                // TODO: Switch between file or image IF the "Value" contain "#"
-                using var faceBackFILL = new MagickImage(new MagickColor(pengulet.Steps[1].Value), step1.Width, step1.Height);
-                
-                // TODO: Switch between file or image IF the "Value" contain "#"
-                using var faceEdgeFILL = new MagickImage(new MagickColor(pengulet.Steps[2].Value), step2.Width, step2.Height);
+		public static async Task WritePenguletAsync(Pengulet pengulet)
+		{
+			int height = ImgBaseSize.Height;
+			int width = ImgBaseSize.Width;
 
-                // TODO: USE random texture OR colour
-                using var noseFullFILL = new MagickImage(new MagickColor("#F7931E"), step3.Width, step3.Height);
-                // TODO: USE random texture OR 
-                // TODO: SHOULD compliment full nose
-                using var noseTopFILL = new MagickImage(new MagickColor("#FFAC5A"), step4.Width, step4.Height);
+			// TODO: Make base bigger for backgrounds or flaps
 
-                // TODO: USE random texture OR colour
-                // TODO: Could change colours between blushes
-                using var blushFILL = new MagickImage(new MagickColor("#F49CC5"), step5.Width, step5.Height);
+			// TODO: Switch between file or image IF the "Value" contain "#"
+			var imgBase = new MagickImage(new MagickColor(pengulet.Steps[0].Value), width, height);
 
-                imgBase.SetWriteMask(step1);
-                imgBase.Composite(faceBackFILL, CompositeOperator.Over);
+			// TODO: Switch between file or image IF the "Value" contain "#"
+			using var faceBackFill = new MagickImage(new MagickColor(pengulet.Steps[1].Value), Step1.Width, Step1.Height);
 
-                imgBase.SetWriteMask(step2);
-                imgBase.Composite(faceEdgeFILL, CompositeOperator.Over);
+			// TODO: Switch between file or image IF the "Value" contain "#"
+			using var faceEdgeFill = new MagickImage(new MagickColor(pengulet.Steps[2].Value), Step2.Width, Step2.Height);
 
-                imgBase.SetWriteMask(step3);
-                imgBase.Composite(noseFullFILL, CompositeOperator.Over);
-                imgBase.SetWriteMask(step4);
-                imgBase.Composite(noseTopFILL, CompositeOperator.Over);
+			// TODO: USE random texture OR colour
+			using var noseFullFill = new MagickImage(NoseFullFillColour, Step3.Width, Step3.Height);
+			// TODO: USE random texture OR 
+			// TODO: SHOULD compliment full nose
+			using var noseTopFill = new MagickImage(NoseTopFillColour, Step4.Width, Step4.Height);
 
-                imgBase.SetWriteMask(step5);
-                imgBase.Composite(blushFILL, CompositeOperator.Over);
+			// TODO: USE random texture OR colour
+			// TODO: Could change colours between blushes
+			using var blushFill = new MagickImage(BlushFillColour, Step5.Width, Step5.Height);
 
-                imgBase.Write($"{pengulet.Index.ToString()}.png");
-                Console.WriteLine("Done");
-            }
-        }
-    }
+			imgBase.SetWriteMask(Step1);
+			imgBase.Composite(faceBackFill, CompositeOperator.Over);
+
+			imgBase.SetWriteMask(Step2);
+			imgBase.Composite(faceEdgeFill, CompositeOperator.Over);
+
+			imgBase.SetWriteMask(Step3);
+			imgBase.Composite(noseFullFill, CompositeOperator.Over);
+			imgBase.SetWriteMask(Step4);
+			imgBase.Composite(noseTopFill, CompositeOperator.Over);
+
+			imgBase.SetWriteMask(Step5);
+			imgBase.Composite(blushFill, CompositeOperator.Over);
+
+			var stream = new FileStream($"{pengulet.Index.ToString()}.png", FileMode.Create);
+
+			await imgBase.WriteAsync(stream, MagickFormat.Png);
+		}
+
+		public static void Dispose()
+		{
+			Step1?.Dispose();
+			Step2?.Dispose();
+			Step3?.Dispose();
+			Step4?.Dispose();
+			Step5?.Dispose();
+			ImgBaseSize?.Dispose();
+		}
+	}
 }
