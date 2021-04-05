@@ -1,0 +1,276 @@
+﻿{
+  "Pengulets": [
+    {
+      "index": 1,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#997a8d"
+        },
+        {
+          "Step": 1,
+          "Value": "#CEC6B3"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#50404d"
+        },
+        {
+          "Step": 1,
+          "Value": "#A2BF8E"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#da3287"
+        },
+        {
+          "Step": 1,
+          "Value": "#F35D8B"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#a32638"
+        },
+        {
+          "Step": 1,
+          "Value": "#A2BF8E"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#004040"
+        },
+        {
+          "Step": 1,
+          "Value": "#494233"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#8b4513"
+        },
+        {
+          "Step": 1,
+          "Value": "#F35D8B"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#71a6d2"
+        },
+        {
+          "Step": 1,
+          "Value": "#D1DADF"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#353839"
+        },
+        {
+          "Step": 1,
+          "Value": "#A2BF8E"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#3cd070"
+        },
+        {
+          "Step": 1,
+          "Value": "#CEC6B3"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#e6e8fa"
+        },
+        {
+          "Step": 1,
+          "Value": "#A2BF8E"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#18453b"
+        },
+        {
+          "Step": 1,
+          "Value": "#494233"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#ff1493"
+        },
+        {
+          "Step": 1,
+          "Value": "#D1DADF"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#f08080"
+        },
+        {
+          "Step": 1,
+          "Value": "#A2BF8E"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#f88379"
+        },
+        {
+          "Step": 1,
+          "Value": "#494233"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#fada5e"
+        },
+        {
+          "Step": 1,
+          "Value": "#CEC6B3"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "steps": [
+        {
+          "Step": 0,
+          "Value": "#e32636"
+        },
+        {
+          "Step": 1,
+          "Value": "#A2BF8E"
+        },
+        {
+          "Step": 2,
+          "Value": "#000000"
+        }
+      ]
+    }
+  ]
+}
